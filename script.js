@@ -23,29 +23,6 @@ startDateInput.addEventListener("change", (event) => {
   endDateInput.disabled = false;
 });
 
-/*document.querySelector(".form").addEventListener("change", function (event) {
-  let x = 0;
-  let y = 0;
-  console.log(event.target);
-  switch (event.target.id) {
-    case "start-date":
-      x = event.target.value;
-      break;
-    case "end-date":
-      y = event.target.value;
-      break;
-  }
-  console.log(x);
-  console.log(y);
-});*/
-
-/*selectTime.addEventListener("change", function (event) {
-  if (event.target.value === "week") {
-    //startDateInput.value = `${new Date().getFullYear()}-0${new Date().getMonth()}-${new Date().getDate()}`;
-    //endDateInput.value = startDateInput.value + 7;
-  }
-});*/
-
 //Функція повертає true якщо день вихідний
 const isWeekend = (date) => {
   const day = new Date(date).getDay();
@@ -193,3 +170,14 @@ selectDays.addEventListener("change", function (event) {
   Array.from(radioButton).forEach((radio) => (radio.checked = false));
   resultBox.textContent = " ";
 });
+
+/*selectTime.addEventListener("change", function (event) {
+  let start = new Date(startDateInput.value);
+  let end = new Date(endDateInput.value);
+  if (selectTime.value === "week") {
+    console.log(start);
+    console.log(end);
+    console.log(start.getDate());
+    endDateInput.value = new Date(start.setDate(start.getDate() + 7));
+  }
+});*/

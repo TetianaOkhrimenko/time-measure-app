@@ -7,6 +7,7 @@ let endDateInput = document.getElementById("end-date");
 let selectTime = document.getElementById("set-time");
 let resultBox = document.querySelector(".result_box");
 let selectDays = document.getElementById("set-of-days");
+let radioButton = document.querySelectorAll(".radio_btn");
 
 secondaryContentBlock.hidden = true;
 
@@ -182,3 +183,13 @@ document
     }
     //resultBox.textContent = message;
   });
+
+//Обробник події на подію change на селекті set of days. Обробник події -
+//коли вибираємо селект set of days, то radio-buttons 'days', 'hours' .... стають un-checked
+//і поле resultBox  стає пустиим.
+
+selectDays.addEventListener("change", function (event) {
+  event.preventDefault();
+  Array.from(radioButton).forEach((radio) => (radio.checked = false));
+  resultBox.textContent = " ";
+});

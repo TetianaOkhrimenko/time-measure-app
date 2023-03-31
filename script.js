@@ -157,6 +157,10 @@ document
 
     switch (target.id) {
       case "days":
+        if (selectDays.value === "option-0") {
+          message = "Enter a valid date or choose set of days";
+        }
+
         message = durationBetweenDates(start, end, "days", typeOfDays);
         console.log(selectDays.value);
 
@@ -175,5 +179,6 @@ document
         break;
     }
 
-    resultBox.textContent = message;
+    resultBox.textContent =
+      message || "Enter a valid date or choose set of days";
   });

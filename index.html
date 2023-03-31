@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Time measure App ⏲️</title>
+
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <div class="hero primary_content">
+      <p class="greating-text">Wellcome to</p>
+      <div class="hero__heading">
+        <h2>Time measure <span>Application</span></h2>
+        <img src="./images/clock.svg" alt="Clock" />
+      </div>
+      <img class="hero__image" src="./images/image-1.svg" alt="Time" />
+      <p class="summary-text">
+        Summary: In this App you can choose two dates and count set of time
+        between them in days, hours, minutes, second. You can choose all days,
+        weekdays or weekends as well.
+      </p>
+      <button class="hero__btn" type="button">Let's Start</button>
+    </div>
+
+    <div class="hero secondary_content">
+      <div class="hero__form">
+        <img src="./images/image-2.svg" alt="Clock" />
+        <div class="date-box">
+          <h3>Choose your date</h3>
+          <div>
+            <div>
+              <img class="icon" src="./images/calendar.svg" alt="Calendar" />
+            </div>
+            <form class="form" action="#" method="GET">
+              <label for="start-date"></label>
+              <input type="date" id="start-date" class="start" />
+
+              <label class="d-none" for="end-date"></label>
+              <input type="date" id="end-date" disabled />
+            </form>
+          </div>
+        </div>
+        <div class="select-box">
+          <img class="icon" src="./images/time.svg" alt="Calendar" />
+          <label class="select-form" for="set-time">Choose set of time</label>
+          <select name="set-time" id="set-time">
+            <option value="option-0" disabled selected hidden>Choose</option>
+            <option value="week">Week</option>
+            <option value="month">Month</option>
+          </select>
+          <span class="select-arrow"></span>
+        </div>
+
+        <div class="select-box select-days">
+          <img class="icon" src="./images/day.svg" alt="Calendar" />
+          <label class="select-form" for="days">Choose set of days</label>
+          <select name="days" id="set-of-days">
+            <option value="option-0" disabled selected hidden>Choose</option>
+            <option value="all_days">All days</option>
+            <option value="business">Business</option>
+            <option value="weekends">Weekends</option>
+          </select>
+          <span class="select-arrow"></span>
+        </div>
+
+        <div class="count_box">
+          <div class="count_option">
+            <input type="radio" name="count_option" id="days" />
+
+            <input type="radio" name="count_option" id="hours" />
+
+            <input type="radio" name="count_option" id="minutes" />
+
+            <input type="radio" name="count_option" id="seconds" />
+          </div>
+
+          <div class="result">
+            <img class="result-icon" src="./images/result.svg" alt="Icon" />
+            <div class="result_box">Your result here...</div>
+          </div>
+        </div>
+      </div>
+      <p class="text">Thank you!</p>
+    </div>
+    <script src="./script.js"></script>
+  </body>
+</html>

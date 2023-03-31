@@ -1,0 +1,295 @@
+@import url("https://fonts.googleapis.com/css2?family=Carattere&family=Oswald&display=swap");
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: radial-gradient(
+    circle at 10% 20%,
+    rgb(246, 187, 187) 0%,
+    rgb(249, 219, 217) 90%
+  );
+  font-family: "Oswald", sans-serif;
+}
+
+h1,
+h2 {
+  margin: 0;
+  padding: 0;
+}
+
+.hero {
+  width: 600px;
+  margin: 40px auto;
+  border-radius: 8px;
+  padding: 60px 40px;
+  background-color: #e5eef3;
+}
+
+.greating-text {
+  font-family: "Carattere", cursive;
+  font-size: 36px;
+  color: #f83b76;
+}
+
+.hero h2 {
+  color: #06255d;
+  font-size: 36px;
+  text-transform: uppercase;
+  line-height: 1.2;
+}
+
+.hero h2 span {
+  color: #f83b76;
+  text-transform: none;
+  display: block;
+}
+
+.hero__image {
+  display: block;
+  margin: 20px auto;
+}
+
+.summary-text {
+  color: #06255d;
+  margin-bottom: 40px;
+}
+
+.hero__btn {
+  display: block;
+  margin: 0 auto;
+  padding: 15px 30px;
+  background-color: #06255d;
+  color: #fff;
+  border-radius: 40px;
+  cursor: pointer;
+  border: none;
+  font-size: 20px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  transition: all 400ms ease-in-out;
+}
+
+.hero__btn:hover {
+  opacity: 0.8;
+}
+
+.hero__heading {
+  display: flex;
+}
+
+.hero__heading img {
+  width: 100px;
+  align-self: flex-start;
+}
+
+.hero__form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 40px;
+}
+
+.date-box h3 {
+  color: #f83b76;
+  font-size: 28px;
+  line-height: 1.2;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.date-box div {
+  display: flex;
+}
+
+.icon {
+  width: 100px;
+  transition: transform 0.8s;
+}
+
+.icon:hover {
+  transform: scale(1.1);
+  cursor: pointer;
+}
+
+.form {
+  display: flex;
+  gap: 10px;
+  height: 100%;
+  align-self: center;
+}
+
+.form input {
+  padding: 10px 15px;
+  background-color: #e5eef3;
+  color: #06255d;
+  border: 2px solid #06255d;
+  border-radius: 40px;
+  transition: 400ms all ease-in-out;
+}
+
+.form input:hover {
+  box-shadow: rgba(6, 37, 93, 0.35) 0px 5px 15px;
+}
+
+.form input:focus {
+  outline: none;
+  box-shadow: 0px 1px 2px 0px rgba(6, 37, 93, 0.7),
+    1px 2px 5px 0px rgb(6 37 93 / 0%), 2px 0px 4px 0px rgb(6 37 93 / 0%),
+    2px 1px 16px 0px rgb(6 37 93 / 50%);
+}
+
+.select-box {
+  align-items: center;
+  display: flex;
+  gap: 30px;
+  position: relative;
+}
+
+.select-box label {
+  font-size: 18px;
+  color: #06255d;
+  padding: 10px 15px 3px 15px;
+}
+
+.select-box select {
+  font-size: 16px;
+  font-family: "Oswald", sans-serif;
+  padding: 10px 15px 5px 5px;
+  box-shadow: rgba(6, 37, 93, 0.35) 0px 5px 15px;
+  height: 100%;
+  width: 160px;
+  background-color: #e5eef3;
+  color: #06255d;
+  border: 1px solid #06255d;
+  border-radius: 5px;
+}
+
+.select-arrow {
+  display: block;
+  width: 20px;
+  height: 100%;
+  background-color: transparent;
+  position: absolute;
+  top: -3px;
+  right: 0;
+  border: none;
+  pointer-events: none;
+}
+.select-arrow::before,
+.select-arrow::after {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 0;
+  bottom: 40%;
+  left: 20%;
+}
+
+.select-arrow::after {
+  border-left: 7px solid transparent;
+  border-right: 7px solid transparent;
+  border-top: 7px solid #06255d;
+}
+
+.select-box select:focus {
+  border: 1px solid #06255d;
+  outline: none;
+}
+
+.select-box option[value] {
+  opacity: 0.6;
+}
+
+.count_option input[type="radio"] {
+  appearance: none;
+  width: 120px;
+  border: 2px solid #06255d;
+  border-radius: 50px;
+}
+
+.count_option input[type="radio"]::after {
+  padding: 15px 30px;
+  background-color: #06255d;
+  color: #fff;
+  border-radius: 40px;
+  cursor: pointer;
+  border: none;
+  font-size: 20px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  transition: all 400ms ease-in-out;
+
+  display: flex;
+  justify-content: center;
+}
+.count_option input[type="radio"]:checked::after {
+  background-color: #f83b76;
+  box-shadow: 0 0 2px #fff, 0 0 2px #fff, 0 0 5px #fff, 0 0 20px #fff;
+}
+
+.count_option input[type="radio"]:focus:not(:focus-visible) {
+  outline: none;
+  box-shadow: rgba(6, 37, 93, 0.35) 0px 5px 15px;
+}
+
+.count_option input[type="radio"]:nth-of-type(1)::after {
+  content: "days";
+}
+
+.count_option input[type="radio"]:nth-of-type(2)::after {
+  content: "hours";
+}
+
+.count_option input[type="radio"]:nth-of-type(3)::after {
+  content: "minutes";
+}
+
+.count_option input[type="radio"]:nth-of-type(4)::after {
+  content: "seconds";
+}
+
+.count_option input[type="radio"]:hover {
+  cursor: pointer;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+
+.result {
+  display: flex;
+  align-items: center;
+  margin: 40px 0;
+}
+
+.result_box {
+  width: 100%;
+  color: #06255d;
+  height: 40px;
+  border: 1px solid #06255d;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  padding: 20px;
+  opacity: 0.8;
+  transition: 400ms all ease-in-out;
+}
+
+.result_box:hover {
+  box-shadow: rgba(6, 37, 93, 0.35) 0px 5px 15px;
+}
+
+.result-icon {
+  width: 100px;
+}
+
+.text {
+  color: #f83b76;
+  font-size: 32px;
+  line-height: 1.2;
+  text-align: center;
+}

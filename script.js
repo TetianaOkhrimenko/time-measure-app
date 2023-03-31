@@ -175,11 +175,10 @@ document
         break;
     }
 
-    /*if (selectDays.value === "option-0") {
+    if (selectDays.value === "option-0") {
       resultBox.textContent = "Enter a valid date or choose set of days";
     } else {
-      resultBox.textContent =
-        message || "Enter a valid date or choose set of days";
-    }*/
-    resultBox.textContent = message;
+      resultBox.textContent = message;
+    }
+    //resultBox.textContent = message;
   });

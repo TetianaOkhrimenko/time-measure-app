@@ -221,7 +221,6 @@ h2 {
 
 .count_option input[type="radio"]:hover {
   cursor: pointer;
-  opacity: 0.8;
   box-shadow: rgba(6, 37, 93, 0.35) 0px 5px 15px;
 }
 
@@ -241,7 +240,6 @@ h2 {
 
 .count_option input[type="radio"]:checked::after {
   background-color: #f83b76;
-  opacity: 1;
   box-shadow: 0 0 2px #fff, 0 0 2px #fff, 0 0 5px #fff, 0 0 20px #fff;
 }
 

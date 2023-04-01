@@ -172,21 +172,40 @@ document
 
     switch (target.id) {
       case "days":
-        message = durationBetweenDates(start, end, "days", typeOfDays);
-        console.log(selectDays.value);
+        message = `${durationBetweenDates(
+          start,
+          end,
+          "days",
+          typeOfDays
+        )} days `;
 
         break;
 
       case "hours":
-        message = durationBetweenDates(start, end, "hours", typeOfDays);
+        message = `${durationBetweenDates(
+          start,
+          end,
+          "hours",
+          typeOfDays
+        )} hours`;
         break;
 
       case "minutes":
-        message = durationBetweenDates(start, end, "minutes", typeOfDays);
+        message = `${durationBetweenDates(
+          start,
+          end,
+          "minutes",
+          typeOfDays
+        )} minutes`;
         break;
 
       case "seconds":
-        message = durationBetweenDates(start, end, "seconds", typeOfDays);
+        message = `${durationBetweenDates(
+          start,
+          end,
+          "seconds",
+          typeOfDays
+        )} seconds`;
         break;
     }
 

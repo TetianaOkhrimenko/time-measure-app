@@ -200,6 +200,9 @@ selectDays.addEventListener("change", function (event) {
 // Added event on select Set of Time
 
 selectTime.addEventListener("change", function (event) {
+  event.preventDefault();
+  Array.from(radioButton).forEach((radio) => (radio.checked = false));
+  resultBox.textContent = " ";
   if (selectTime.value === "week") {
     //console.log(start);
     //console.log(end);

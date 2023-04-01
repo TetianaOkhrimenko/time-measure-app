@@ -177,13 +177,18 @@ selectDays.addEventListener("change", function (event) {
   resultBox.textContent = " ";
 });
 
-/*selectTime.addEventListener("change", function (event) {
+selectTime.addEventListener("change", function (event) {
   let start = new Date(startDateInput.value);
   let end = new Date(endDateInput.value);
   if (selectTime.value === "week") {
     console.log(start);
     console.log(end);
-    console.log(start.getDate());
-    endDateInput.value = new Date(start.setDate(start.getDate() + 7));
+    let dateAfterWeek = new Date(start.setDate(start.getDate() + 7));
+    console.log(dateAfterWeek); // Sat Apr 08 2023 01:00:00 GMT+0100 (за літнім часом у Великій Британії)
+    console.log(startDateInput.value); //2023-04-01
+    endDateInput.value = `${dateAfterWeek.getFullYear()}-0${
+      dateAfterWeek.getMonth() + 1
+    }-0${dateAfterWeek.getDate()}`;
+    console.log(endDateInput.value);
   }
-});*/
+});

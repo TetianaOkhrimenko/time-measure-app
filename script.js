@@ -155,8 +155,10 @@ document
 
     if (selectDays.value === "option-0") {
       resultBox.textContent = "Enter a valid date or choose set of days";
+      resultBox.style.color = "#f83b76";
     } else {
       resultBox.textContent = message;
+      resultBox.style.color = "#06255d";
     }
     //resultBox.textContent = message;
   });

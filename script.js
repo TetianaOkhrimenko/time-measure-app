@@ -63,6 +63,7 @@ let countDifferenseMiliseconds = function (start, end) {
 };
 console.log(countDifferenseMiliseconds("01 March 2023", "31 March 2023"));
 
+//Function count reasul in days or hours or seconds etc depending of what days - business, weekends.
 function durationBetweenDates(start, end, type, typeOfDays) {
   let result; // seconds
 
@@ -99,6 +100,25 @@ function durationBetweenDates(start, end, type, typeOfDays) {
 }
 
 console.log(durationBetweenDates("01 March 2023", "31 March 2023", "hours"));
+
+//Function adds week or month to current day and return new date
+function addDaystoDate(day) {
+  let start = new Date(startDateInput.value);
+  let end = new Date(endDateInput.value);
+  let dateAfterWeek = new Date(start.setDate(start.getDate() + day));
+  let year = dateAfterWeek.getFullYear();
+  let month = dateAfterWeek.getMonth() + 1;
+  let date = dateAfterWeek.getDate();
+  if (month < 10) {
+    month = `0${month}`;
+  }
+  if (date < 10) {
+    date = `0${date}`;
+  }
+  //console.log(dateAfterWeek); // Sat Apr 08 2023 01:00:00 GMT+0100 (за літнім часом у Великій Британії)
+  //console.log(startDateInput.value); //2023-04-01
+  endDateInput.value = `${year}-${month}-${date}`;
+}
 
 //EVENTS
 
@@ -177,18 +197,16 @@ selectDays.addEventListener("change", function (event) {
   resultBox.textContent = " ";
 });
 
+// Added event on select Set of Time
+
 selectTime.addEventListener("change", function (event) {
-  let start = new Date(startDateInput.value);
-  let end = new Date(endDateInput.value);
   if (selectTime.value === "week") {
-    console.log(start);
-    console.log(end);
-    let dateAfterWeek = new Date(start.setDate(start.getDate() + 7));
-    console.log(dateAfterWeek); // Sat Apr 08 2023 01:00:00 GMT+0100 (за літнім часом у Великій Британії)
-    console.log(startDateInput.value); //2023-04-01
-    endDateInput.value = `${dateAfterWeek.getFullYear()}-0${
-      dateAfterWeek.getMonth() + 1
-    }-0${dateAfterWeek.getDate()}`;
-    console.log(endDateInput.value);
+    //console.log(start);
+    //console.log(end);
+    addDaystoDate(7);
+  }
+
+  if (selectTime.value === "month") {
+    addDaystoDate(30);
   }
 });

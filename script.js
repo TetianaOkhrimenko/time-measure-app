@@ -170,7 +170,11 @@ document
       typeOfDays = "weekends";
     }
 
-    switch (target.id) {
+    message = `${durationBetweenDates(start, end, target.id, typeOfDays)} ${
+      target.id
+    }`;
+
+    /*switch (target.id) {
       case "days":
         message = `${durationBetweenDates(
           start,
@@ -207,7 +211,7 @@ document
           typeOfDays
         )} seconds`;
         break;
-    }
+    }*/
 
     if (selectDays.value === "option-0") {
       resultBox.textContent = "Enter a valid date or choose set of days";

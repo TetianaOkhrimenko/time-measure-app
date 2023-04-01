@@ -93,6 +93,10 @@ h2 {
   gap: 40px;
 }
 
+.date-box {
+  width: 100%;
+}
+
 .date-box h3 {
   color: #f83b76;
   font-size: 28px;
@@ -103,6 +107,7 @@ h2 {
 
 .date-box div {
   display: flex;
+  gap: 30px;
 }
 
 .icon {
@@ -129,6 +134,7 @@ h2 {
   border: 2px solid #06255d;
   border-radius: 40px;
   transition: 400ms all ease-in-out;
+  width: 160px;
 }
 
 .form input:hover {
@@ -153,6 +159,7 @@ h2 {
   font-size: 18px;
   color: #06255d;
   padding: 10px 15px 3px 15px;
+  width: 160px;
 }
 
 .select-box select {

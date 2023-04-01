@@ -10,18 +10,7 @@ let selectDays = document.getElementById("set-of-days");
 let radioButton = document.querySelectorAll(".radio_btn");
 
 secondaryContentBlock.hidden = true;
-
-buttonStart.addEventListener("click", function (event) {
-  event.preventDefault();
-  primaryContentBlock.hidden = true;
-  secondaryContentBlock.hidden = false;
-});
-
-startDateInput.addEventListener("change", (event) => {
-  let startDateValue = new Date(event.target.value);
-  console.log(startDateValue);
-  endDateInput.disabled = false;
-});
+endDateInput.style.opacity = "0.7";
 
 //Функція повертає true якщо день вихідний
 const isWeekend = (date) => {
@@ -110,6 +99,21 @@ function durationBetweenDates(start, end, type, typeOfDays) {
 }
 
 console.log(durationBetweenDates("01 March 2023", "31 March 2023", "hours"));
+
+//EVENTS
+
+buttonStart.addEventListener("click", function (event) {
+  event.preventDefault();
+  primaryContentBlock.hidden = true;
+  secondaryContentBlock.hidden = false;
+});
+
+startDateInput.addEventListener("change", (event) => {
+  let startDateValue = new Date(event.target.value);
+  console.log(startDateValue);
+  endDateInput.disabled = false;
+  endDateInput.style.opacity = "1";
+});
 
 //Додаємо обробник події на подію change на radion buttons - батьківський div. Обробник події -
 //виводить результат у resultBox в залежності яка radio button is checked

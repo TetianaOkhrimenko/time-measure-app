@@ -12,6 +12,13 @@ let radioButton = document.querySelectorAll(".radio_btn");
 secondaryContentBlock.hidden = true;
 endDateInput.style.opacity = "0.7";
 
+//Function that make radio buttons un-cheked
+
+function uncheckRadioButton() {
+  Array.from(radioButton).forEach((radio) => (radio.checked = false));
+  resultBox.textContent = " ";
+}
+
 //Функція повертає true якщо день вихідний
 const isWeekend = (date) => {
   const day = new Date(date).getDay();
@@ -129,10 +136,16 @@ buttonStart.addEventListener("click", function (event) {
 });
 
 startDateInput.addEventListener("change", (event) => {
-  let startDateValue = new Date(event.target.value);
-  console.log(startDateValue);
+  //let startDateValue = new Date(event.target.value);
+  uncheckRadioButton();
+  selectTime.value = "option-0";
   endDateInput.disabled = false;
   endDateInput.style.opacity = "1";
+});
+
+endDateInput.addEventListener("change", (even) => {
+  uncheckRadioButton();
+  selectTime.value = "option-0";
 });
 
 //Додаємо обробник події на подію change на radion buttons - батьківський div. Обробник події -
@@ -191,18 +204,13 @@ document
 //коли вибираємо селект set of days, то radio-buttons 'days', 'hours' .... стають un-checked
 //і поле resultBox  стає пустиим.
 
-selectDays.addEventListener("change", function (event) {
-  event.preventDefault();
-  Array.from(radioButton).forEach((radio) => (radio.checked = false));
-  resultBox.textContent = " ";
-});
+selectDays.addEventListener("change", uncheckRadioButton);
 
 // Added event on select Set of Time
 
 selectTime.addEventListener("change", function (event) {
   event.preventDefault();
-  Array.from(radioButton).forEach((radio) => (radio.checked = false));
-  resultBox.textContent = " ";
+  uncheckRadioButton();
   if (selectTime.value === "week") {
     //console.log(start);
     //console.log(end);

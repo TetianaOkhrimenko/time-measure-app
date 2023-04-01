@@ -213,7 +213,11 @@ document
         break;
     }*/
 
-    if (selectDays.value === "option-0") {
+    if (
+      selectDays.value === "option-0" ||
+      !startDateInput.value ||
+      !endDateInput.value
+    ) {
       resultBox.textContent = "Enter a valid date or choose set of days";
       resultBox.style.color = "#f83b76";
     } else {

@@ -366,6 +366,9 @@ input::-webkit-inner-spin-button {
 }
 
 @media (max-width: 425px) {
+  .hero {
+    width: 100%;
+  }
   .secondary_image {
     max-width: 100%;
   }

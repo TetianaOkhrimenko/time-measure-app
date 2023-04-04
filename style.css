@@ -373,6 +373,10 @@ input::-webkit-inner-spin-button {
     width: 70px;
   }
 
+  .date-box {
+    width: auto;
+  }
+
   .form {
     gap: 5px;
   }

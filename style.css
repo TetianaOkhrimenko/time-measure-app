@@ -21,6 +21,10 @@ h2 {
   padding: 0;
 }
 
+.light {
+  opacity: 0.7;
+}
+
 .hero {
   width: 600px;
   margin: 40px auto;
@@ -301,4 +305,53 @@ input::-webkit-inner-spin-button {
   font-size: 32px;
   line-height: 1.2;
   text-align: center;
+}
+
+@media (max-width: 600px) {
+  .hero {
+    max-width: 100%;
+    padding: 20px 10px;
+  }
+
+  .count_box {
+    width: 100%;
+  }
+
+  .count_option {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+
+  .radio_btn {
+    justify-self: center;
+  }
+  .count_option input[type="radio"] {
+    width: 150px;
+  }
+}
+
+@media (max-width: 525px) {
+  .select-box {
+    gap: 0;
+    align-self: center;
+  }
+
+  .select-box label {
+    max-width: 100%;
+    padding: 10px 10px 3px 5px;
+    width: auto;
+  }
+  .date-box div {
+    justify-content: center;
+    gap: 0;
+  }
+
+  .form input {
+    width: auto;
+  }
+
+  .result {
+    padding: 0 20px;
+  }
 }

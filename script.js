@@ -8,9 +8,11 @@ let selectTime = document.getElementById("set-time");
 let resultBox = document.querySelector(".result_box");
 let selectDays = document.getElementById("set-of-days");
 let radioButton = document.querySelectorAll(".radio_btn");
+let countOption = document.querySelector(".count_option");
 
 secondaryContentBlock.hidden = true;
-endDateInput.style.opacity = "0.7";
+endDateInput.classList.add("light");
+//endDateInput.style.opacity = "0.7";
 
 //Function that make radio buttons un-cheked
 
@@ -68,7 +70,7 @@ let countDifferenseMiliseconds = function (start, end) {
   endD = endD.setHours(24, 0, 0, 0);
   return endD - startD;
 };
-console.log(countDifferenseMiliseconds("01 March 2023", "31 March 2023"));
+//console.log(countDifferenseMiliseconds("01 March 2023", "31 March 2023"));
 
 //Function count reasul in days or hours or seconds etc depending of what days - business, weekends.
 function durationBetweenDates(start, end, type, typeOfDays) {
@@ -106,7 +108,7 @@ function durationBetweenDates(start, end, type, typeOfDays) {
   return Math.round(result);
 }
 
-console.log(durationBetweenDates("01 March 2023", "31 March 2023", "hours"));
+//console.log(durationBetweenDates("01 March 2023", "31 March 2023", "hours"));
 
 //Function transforms date to format YYYY-DD-MM
 const formatDate = (date) => date.toISOString().substring(0, 10);
@@ -148,44 +150,40 @@ startDateInput.addEventListener("change", (event) => {
   uncheckRadioButton();
   selectTime.value = "option-0";
   endDateInput.disabled = false;
-  endDateInput.style.opacity = "1";
+  endDateInput.classList.remove("light");
+  //endDateInput.style.opacity = "1";
 });
 
 endDateInput.addEventListener("change", (even) => {
   uncheckRadioButton();
   selectTime.value = "option-0";
-  if (new Date(endDateInput.value) < new Date(startDateInput.value)) {
-    console.log("endDate not greater than startDate");
-  }
 });
 
 //Додаємо обробник події на подію change на radion buttons - батьківський div. Обробник події -
 //виводить результат у resultBox в залежності яка radio button is checked
-document
-  .querySelector(".count_option")
-  .addEventListener("change", function (event) {
-    event.preventDefault();
-    let target = event.target;
-    let message;
-    let typeOfDays;
-    let firstDate = startDateInput.value;
-    let secondtDate = endDateInput.value;
-    let start = new Date(firstDate);
-    let end = new Date(secondtDate);
+countOption.addEventListener("change", function (event) {
+  event.preventDefault();
+  let target = event.target;
+  let message;
+  let typeOfDays;
+  let firstDate = startDateInput.value;
+  let secondtDate = endDateInput.value;
+  let start = new Date(firstDate);
+  let end = new Date(secondtDate);
 
-    if (selectDays.value === "business") {
-      typeOfDays = "business";
-    }
+  if (selectDays.value === "business") {
+    typeOfDays = "business";
+  }
 
-    if (selectDays.value === "weekends") {
-      typeOfDays = "weekends";
-    }
+  if (selectDays.value === "weekends") {
+    typeOfDays = "weekends";
+  }
 
-    message = `${durationBetweenDates(start, end, target.id, typeOfDays)} ${
-      target.id
-    }`;
+  message = `${durationBetweenDates(start, end, target.id, typeOfDays)} ${
+    target.id
+  }`;
 
-    /*switch (target.id) {
+  /*switch (target.id) {
       case "days":
         message = `${durationBetweenDates(
           start,
@@ -224,19 +222,23 @@ document
         break;
     }*/
 
-    if (
-      selectDays.value === "option-0" ||
-      !startDateInput.value ||
-      !endDateInput.value
-    ) {
-      resultBox.textContent = "Enter a valid date or choose set of days";
-      resultBox.style.color = "#f83b76";
-    } else {
-      resultBox.textContent = message;
-      resultBox.style.color = "#06255d";
-    }
-    //resultBox.textContent = message;
-  });
+  if (
+    selectDays.value === "option-0" ||
+    !startDateInput.value ||
+    !endDateInput.value
+  ) {
+    resultBox.textContent = "Enter a valid date or choose set of days";
+    resultBox.style.color = "#f83b76";
+  } else {
+    resultBox.textContent = message;
+    resultBox.style.color = "#06255d";
+  }
+
+  if (new Date(endDateInput.value) < new Date(startDateInput.value)) {
+    resultBox.textContent = "Your second date couldn.t be less than first date";
+  }
+  //resultBox.textContent = message;
+});
 
 //Обробник події на подію change на селекті set of days. Обробник події -
 //коли вибираємо селект set of days, то radio-buttons 'days', 'hours' .... стають un-checked

@@ -151,6 +151,8 @@ startDateInput.addEventListener("change", (event) => {
   selectTime.value = "option-0";
   endDateInput.disabled = false;
   endDateInput.classList.remove("light");
+  let minDate = formatDate(new Date(startDateInput.value));
+  endDateInput.setAttribute("min", minDate);
   //endDateInput.style.opacity = "1";
 });
 
@@ -234,9 +236,9 @@ countOption.addEventListener("change", function (event) {
     resultBox.style.color = "#06255d";
   }
 
-  if (new Date(endDateInput.value) < new Date(startDateInput.value)) {
-    resultBox.textContent = "Your second date couldn.t be less than first date";
-  }
+  //if (new Date(endDateInput.value) < new Date(startDateInput.value)) {
+  //  resultBox.textContent = "Your second date couldn.t be less than first date";
+  //}
   //resultBox.textContent = message;
 });
 

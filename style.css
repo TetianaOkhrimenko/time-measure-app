@@ -398,4 +398,8 @@ input::-webkit-inner-spin-button {
   .result-icon {
     width: 70px;
   }
+
+  .select-arrow {
+    top: -1px;
+  }
 }

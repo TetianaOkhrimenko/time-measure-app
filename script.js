@@ -108,23 +108,31 @@ function durationBetweenDates(start, end, type, typeOfDays) {
 
 console.log(durationBetweenDates("01 March 2023", "31 March 2023", "hours"));
 
+//Function transforms date to format YYYY-DD-MM
+const formatDate = (date) => date.toISOString().substring(0, 10);
+// formatDate(new Date()); // YYYY-DD-MM
+
 //Function adds week or month to current day and return new date
 function addDaystoDate(day) {
   let start = new Date(startDateInput.value);
   let end = new Date(endDateInput.value);
-  let dateAfterWeek = new Date(start.setDate(start.getDate() + day));
-  let year = dateAfterWeek.getFullYear();
-  let month = dateAfterWeek.getMonth() + 1;
-  let date = dateAfterWeek.getDate();
-  if (month < 10) {
-    month = `0${month}`;
-  }
-  if (date < 10) {
-    date = `0${date}`;
-  }
+  let newDate = new Date(start.setDate(start.getDate() + day));
+  endDateInput.value = formatDate(newDate);
+  console.log(formatDate(newDate));
+
+  //let dateAfterWeek = new Date(start.setDate(start.getDate() + day));
+  //let year = dateAfterWeek.getFullYear();
+  //let month = dateAfterWeek.getMonth() + 1;
+  //let date = dateAfterWeek.getDate();
+  //if (month < 10) {
+  //  month = `0${month}`;
+  //}
+  //if (date < 10) {
+  //  date = `0${date}`;
+  //}
   //console.log(dateAfterWeek); // Sat Apr 08 2023 01:00:00 GMT+0100 (за літнім часом у Великій Британії)
   //console.log(startDateInput.value); //2023-04-01
-  endDateInput.value = `${year}-${month}-${date}`;
+  //endDateInput.value = `${year}-${month}-${date}`;
 }
 
 //EVENTS
@@ -146,6 +154,9 @@ startDateInput.addEventListener("change", (event) => {
 endDateInput.addEventListener("change", (even) => {
   uncheckRadioButton();
   selectTime.value = "option-0";
+  if (new Date(endDateInput.value) < new Date(startDateInput.value)) {
+    console.log("endDate not greater than startDate");
+  }
 });
 
 //Додаємо обробник події на подію change на radion buttons - батьківський div. Обробник події -
@@ -238,7 +249,32 @@ selectDays.addEventListener("change", uncheckRadioButton);
 selectTime.addEventListener("change", function (event) {
   event.preventDefault();
   uncheckRadioButton();
-  if (selectTime.value === "week") {
+  let start = new Date(startDateInput.value);
+  let newMonth = start.getMonth() + 1;
+  console.log(newMonth);
+  switch (selectTime.value) {
+    case "week":
+      addDaystoDate(7);
+      break;
+    case "month":
+      if (newMonth === 2) {
+        addDaystoDate(28);
+        break;
+      }
+      if (
+        newMonth === 4 ||
+        newMonth === 6 ||
+        newMonth === 9 ||
+        newMonth === 11
+      ) {
+        addDaystoDate(30);
+        break;
+      }
+      addDaystoDate(31);
+      break;
+  }
+
+  /* if (selectTime.value === "week") {
     //console.log(start);
     //console.log(end);
     addDaystoDate(7);
@@ -246,5 +282,5 @@ selectTime.addEventListener("change", function (event) {
 
   if (selectTime.value === "month") {
     addDaystoDate(30);
-  }
+  }*/
 });

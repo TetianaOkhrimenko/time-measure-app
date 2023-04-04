@@ -329,6 +329,14 @@ input::-webkit-inner-spin-button {
   .count_option input[type="radio"] {
     width: 150px;
   }
+
+  .date-box div {
+    gap: 0;
+  }
+
+  .select-box {
+    gap: 0;
+  }
 }
 
 @media (max-width: 525px) {

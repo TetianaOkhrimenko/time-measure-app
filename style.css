@@ -365,16 +365,21 @@ input::-webkit-inner-spin-button {
 }
 
 @media (max-width: 425px) {
-  .hero__image {
+  .secondary_image {
     max-width: 100%;
   }
 
   .icon {
-    width: 80px;
+    width: 70px;
+  }
+
+  .form {
+    gap: 5px;
   }
 
   .form input {
     padding: 10px 10px;
+    width: 120px;
   }
 
   .select-box select {
@@ -384,5 +389,9 @@ input::-webkit-inner-spin-button {
   .select-box {
     gap: 0;
     align-self: flex-start;
+  }
+
+  .result-icon {
+    width: 70px;
   }
 }

@@ -363,3 +363,26 @@ input::-webkit-inner-spin-button {
     padding: 0 20px;
   }
 }
+
+@media (max-width: 425px) {
+  .hero__image {
+    max-width: 100%;
+  }
+
+  .icon {
+    width: 80px;
+  }
+
+  .form input {
+    padding: 10px 10px;
+  }
+
+  .select-box select {
+    width: 120px;
+  }
+
+  .select-box {
+    gap: 0;
+    align-self: flex-start;
+  }
+}

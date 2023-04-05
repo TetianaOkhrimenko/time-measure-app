@@ -1,4 +1,7 @@
 "use strict";
+
+const STORAGE_KEY = "results";
+
 let primaryContentBlock = document.querySelector(".primary_content");
 let secondaryContentBlock = document.querySelector(".secondary_content");
 let buttonStart = document.querySelector(".hero__btn");
@@ -9,6 +12,7 @@ let resultBox = document.querySelector(".result_box");
 let selectDays = document.getElementById("set-of-days");
 let radioButton = document.querySelectorAll(".radio_btn");
 let countOption = document.querySelector(".count_option");
+let storageBox = document.querySelector(".storage-box");
 
 secondaryContentBlock.hidden = true;
 endDateInput.classList.add("light");
@@ -137,6 +141,45 @@ function addDaystoDate(day) {
   //endDateInput.value = `${year}-${month}-${date}`;
 }
 
+//
+
+function getResults() {
+  const results = getResultsFromLocalStorage();
+
+  results.forEach((result) => {
+    let storageItem = document.createElement("div");
+    storageItem.classList.add("storage-item");
+    storageItem.textContent = result;
+    storageBox.prepend(storageItem);
+  });
+}
+
+//Function adds result to storageBox
+
+function addResult(start, end, message) {
+  let storageItem = document.createElement("div");
+  storageItem.classList.add("storage-item");
+  storageItem.textContent = `Dates: ${start}   ${end}  Result: ${message}`;
+  storageBox.prepend(storageItem);
+
+  storeResultInLocalStorage(storageItem.textContent);
+}
+
+//Storage's functions
+
+function getResultsFromLocalStorage() {
+  const results = JSON.parse(localStorage.getItem(STORAGE_KEY)) || [];
+  return results;
+}
+
+function storeResultInLocalStorage(result) {
+  let results = getResultsFromLocalStorage();
+  results.push(result);
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(results));
+}
+
+getResults();
+
 //EVENTS
 
 buttonStart.addEventListener("click", function (event) {
@@ -156,7 +199,7 @@ startDateInput.addEventListener("change", (event) => {
   //endDateInput.style.opacity = "1";
 });
 
-endDateInput.addEventListener("change", (even) => {
+endDateInput.addEventListener("change", (event) => {
   uncheckRadioButton();
   selectTime.value = "option-0";
 });
@@ -234,6 +277,7 @@ countOption.addEventListener("change", function (event) {
   } else {
     resultBox.textContent = message;
     resultBox.style.color = "#06255d";
+    addResult(firstDate, secondtDate, message);
   }
 
   //if (new Date(endDateInput.value) < new Date(startDateInput.value)) {

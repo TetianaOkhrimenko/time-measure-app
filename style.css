@@ -307,6 +307,25 @@ input::-webkit-inner-spin-button {
   text-align: center;
 }
 
+.storage-box {
+  margin: 0 auto;
+  width: 100%;
+}
+
+.storage-item {
+  width: 100%;
+  color: #06255d;
+  height: 40px;
+  border: 1px solid #06255d;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  padding: 20px;
+  opacity: 0.8;
+  transition: 400ms all ease-in-out;
+  margin-bottom: 10px;
+}
+
 @media (max-width: 600px) {
   .hero {
     width: 90%;

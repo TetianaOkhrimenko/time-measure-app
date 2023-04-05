@@ -290,6 +290,11 @@ selectTime.addEventListener("change", function (event) {
         addDaystoDate(30);
         break;
       }
+
+      if (newMonth === 3) {
+        addDaystoDate(32);
+        break;
+      }
       addDaystoDate(31);
       break;
   }

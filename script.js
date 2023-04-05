@@ -163,8 +163,9 @@ function addResult(start, end, message) {
   storageItem.classList.add("storage-item");
   storageItem.textContent = `Dates: ${start}   ${end}  Result: ${message}`;
   let allStorageItems = document.querySelectorAll(".storage-item");
-  if (allStorageItems.length < 10) {
-    storageBox.prepend(storageItem);
+  storageBox.prepend(storageItem);
+  if (allStorageItems.length >= 10) {
+    storageBox.lastChild.remove();
   }
 
   storeResultInLocalStorage(storageItem.textContent);
@@ -179,8 +180,9 @@ function getResultsFromLocalStorage() {
 
 function storeResultInLocalStorage(result) {
   let results = getResultsFromLocalStorage();
-  if (results.length < 10) {
-    results.push(result);
+  results.push(result);
+  if (results.length >= 10) {
+    results.shift();
   }
 
   localStorage.setItem(STORAGE_KEY, JSON.stringify(results));

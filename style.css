@@ -327,6 +327,14 @@ input::-webkit-inner-spin-button {
   margin-bottom: 10px;
 }
 
+.red {
+  color: #f83b76;
+}
+
+.blue {
+  color: #06255d;
+}
+
 @media (max-width: 600px) {
   .hero {
     width: 90%;
@@ -357,6 +365,22 @@ input::-webkit-inner-spin-button {
 
   .select-box {
     gap: 0;
+  }
+
+  .count_option input[type="radio"]:nth-child(1) {
+    justify-self: flex-end;
+  }
+
+  .count_option input[type="radio"]:nth-child(2) {
+    justify-self: flex-start;
+  }
+
+  .count_option input[type="radio"]:nth-child(3) {
+    justify-self: flex-end;
+  }
+
+  .count_option input[type="radio"]:nth-child(4) {
+    justify-self: flex-start;
   }
 }
 

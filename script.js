@@ -250,10 +250,10 @@ countOption.addEventListener("change", function (event) {
     !endDateInput.value
   ) {
     resultBox.textContent = "Enter a valid date or choose set of days";
-    resultBox.style.color = "#f83b76";
+    resultBox.classList.add("red");
   } else {
     resultBox.textContent = message;
-    resultBox.style.color = "#06255d";
+    resultBox.classList.remove("red");
     addResult(firstDate, secondtDate, message);
   }
 });

@@ -161,7 +161,7 @@ function getResults() {
 function addResult(start, end, message) {
   let storageItem = document.createElement("div");
   storageItem.classList.add("storage-item");
-  storageItem.textContent = `Dates: ${start}   ${end}  Result: ${message}`;
+  storageItem.textContent = `Dates: ${start}    ${end}     Result: ${message}`;
   let allStorageItems = document.querySelectorAll(".storage-item");
   storageBox.prepend(storageItem);
   if (allStorageItems.length >= 10) {
@@ -181,7 +181,7 @@ function getResultsFromLocalStorage() {
 function storeResultInLocalStorage(result) {
   let results = getResultsFromLocalStorage();
   results.push(result);
-  if (results.length >= 10) {
+  if (results.length > 10) {
     results.shift();
   }
 
@@ -199,6 +199,7 @@ buttonStart.addEventListener("click", function (event) {
 });
 
 startDateInput.addEventListener("change", (event) => {
+  event.preventDefault();
   //let startDateValue = new Date(event.target.value);
   uncheckRadioButton();
   selectTime.value = "option-0";
@@ -206,6 +207,11 @@ startDateInput.addEventListener("change", (event) => {
   endDateInput.classList.remove("light");
   let minDate = formatDate(new Date(startDateInput.value));
   endDateInput.setAttribute("min", minDate);
+
+  if (event.target.value > endDateInput.value) {
+    endDateInput.setAttribute("min", minDate);
+    endDateInput.value = "";
+  }
   //endDateInput.style.opacity = "1";
 });
 
@@ -238,45 +244,6 @@ countOption.addEventListener("change", function (event) {
     target.id
   }`;
 
-  /*switch (target.id) {
-      case "days":
-        message = `${durationBetweenDates(
-          start,
-          end,
-          "days",
-          typeOfDays
-        )} days `;
-
-        break;
-
-      case "hours":
-        message = `${durationBetweenDates(
-          start,
-          end,
-          "hours",
-          typeOfDays
-        )} hours`;
-        break;
-
-      case "minutes":
-        message = `${durationBetweenDates(
-          start,
-          end,
-          "minutes",
-          typeOfDays
-        )} minutes`;
-        break;
-
-      case "seconds":
-        message = `${durationBetweenDates(
-          start,
-          end,
-          "seconds",
-          typeOfDays
-        )} seconds`;
-        break;
-    }*/
-
   if (
     selectDays.value === "option-0" ||
     !startDateInput.value ||
@@ -289,11 +256,6 @@ countOption.addEventListener("change", function (event) {
     resultBox.style.color = "#06255d";
     addResult(firstDate, secondtDate, message);
   }
-
-  //if (new Date(endDateInput.value) < new Date(startDateInput.value)) {
-  //  resultBox.textContent = "Your second date couldn.t be less than first date";
-  //}
-  //resultBox.textContent = message;
 });
 
 //Обробник події на подію change на селекті set of days. Обробник події -

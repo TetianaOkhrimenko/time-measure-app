@@ -146,11 +146,13 @@ function addDaystoDate(day) {
 function getResults() {
   const results = getResultsFromLocalStorage();
 
-  results.forEach((result) => {
-    let storageItem = document.createElement("div");
-    storageItem.classList.add("storage-item");
-    storageItem.textContent = result;
-    storageBox.prepend(storageItem);
+  results.forEach((result, i) => {
+    if (i < 10) {
+      let storageItem = document.createElement("div");
+      storageItem.classList.add("storage-item");
+      storageItem.textContent = result;
+      storageBox.prepend(storageItem);
+    }
   });
 }
 
@@ -160,7 +162,10 @@ function addResult(start, end, message) {
   let storageItem = document.createElement("div");
   storageItem.classList.add("storage-item");
   storageItem.textContent = `Dates: ${start}   ${end}  Result: ${message}`;
-  storageBox.prepend(storageItem);
+  let allStorageItems = document.querySelectorAll(".storage-item");
+  if (allStorageItems.length < 10) {
+    storageBox.prepend(storageItem);
+  }
 
   storeResultInLocalStorage(storageItem.textContent);
 }
@@ -174,7 +179,10 @@ function getResultsFromLocalStorage() {
 
 function storeResultInLocalStorage(result) {
   let results = getResultsFromLocalStorage();
-  results.push(result);
+  if (results.length < 10) {
+    results.push(result);
+  }
+
   localStorage.setItem(STORAGE_KEY, JSON.stringify(results));
 }
 

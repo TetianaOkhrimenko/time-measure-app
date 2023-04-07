@@ -437,6 +437,19 @@ input::-webkit-inner-spin-button {
   }
 }
 
+@media (max-width: 485px) {
+  .form {
+    gap: 5px;
+  }
+  .select-box select {
+    width: 140px;
+  }
+
+  .icon {
+    width: 80px;
+  }
+}
+
 @media (max-width: 425px) {
   .hero {
     width: 100%;

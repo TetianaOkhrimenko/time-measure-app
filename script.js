@@ -13,6 +13,7 @@ let selectDays = document.getElementById("set-of-days");
 let radioButton = document.querySelectorAll(".radio_btn");
 let countOption = document.querySelector(".count_option");
 let storageBox = document.querySelector(".storage-box");
+let storageHeading = document.querySelector(".storage-data");
 
 secondaryContentBlock.hidden = true;
 endDateInput.classList.add("light");
@@ -167,7 +168,9 @@ function getResults() {
     if (i < 10) {
       let storageItem = document.createElement("div");
       storageItem.classList.add("storage-item");
-      storageItem.textContent = result;
+      //storageItem.textContent = result;
+      //storageItem.textContent = `Dates: ${result.start}    ${result.end}     Result: ${result.result}`;
+      storageItem.innerHTML = `<div class='item'>${result.startdate}</div><div class='item'>${result.enddate} </div><div class='item'>${result.result}</div>`;
       storageBox.prepend(storageItem);
     }
   });
@@ -178,14 +181,17 @@ function getResults() {
 function addResult(start, end, message) {
   let storageItem = document.createElement("div");
   storageItem.classList.add("storage-item");
-  storageItem.textContent = `Dates: ${start}    ${end}     Result: ${message}`;
+  //storageItem.textContent = `Dates: ${start}    ${end}     Result: ${message}`;
+  storageItem.innerHTML = `<div class='item'>${start}</div><div class='item'>${end} </div><div class='item'>${message}</div>`;
   let allStorageItems = document.querySelectorAll(".storage-item");
   storageBox.prepend(storageItem);
+
   if (allStorageItems.length >= 10) {
     storageBox.lastChild.remove();
   }
 
-  storeResultInLocalStorage(storageItem.textContent);
+  //storeResultInLocalStorage(storageItem.textContent);
+  storeResultInLocalStorage(start, end, message);
 }
 
 //Storage's functions
@@ -195,9 +201,10 @@ function getResultsFromLocalStorage() {
   return results;
 }
 
-function storeResultInLocalStorage(result) {
+function storeResultInLocalStorage(start, end, message) {
   let results = getResultsFromLocalStorage();
-  results.push(result);
+  results.push({ startdate: start, enddate: end, result: message });
+
   if (results.length > 10) {
     results.shift();
   }

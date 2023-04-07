@@ -13,7 +13,6 @@ let selectDays = document.getElementById("set-of-days");
 let radioButton = document.querySelectorAll(".radio_btn");
 let countOption = document.querySelector(".count_option");
 let storageBox = document.querySelector(".storage-box");
-let storageHeading = document.querySelector(".storage-data");
 
 secondaryContentBlock.hidden = true;
 endDateInput.classList.add("light");
@@ -304,35 +303,5 @@ selectTime.addEventListener("change", function (event) {
     case "month":
       addMonth();
       break;
-    /*if (newMonth === 2) {
-        addDaystoDate(28);
-        break;
-      }
-      if (
-        newMonth === 4 ||
-        newMonth === 6 ||
-        newMonth === 9 ||
-        newMonth === 11
-      ) {
-        addDaystoDate(30);
-        break;
-      }
-
-      if (newMonth === 3) {
-        addDaystoDate(32);
-        break;
-      }
-      addDaystoDate(31);
-      break;*/
   }
-
-  /* if (selectTime.value === "week") {
-    //console.log(start);
-    //console.log(end);
-    addDaystoDate(7);
-  }
-
-  if (selectTime.value === "month") {
-    addDaystoDate(30);
-  }*/
 });

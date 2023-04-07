@@ -216,6 +216,10 @@ h2 {
   opacity: 0.6;
 }
 
+.count_box {
+  margin: 0 auto;
+}
+
 .count_option input[type="radio"] {
   appearance: none;
   width: 120px;
@@ -318,7 +322,7 @@ input::-webkit-inner-spin-button {
 .storage-item,
 .storage-data {
   width: 100%;
-  height: 40px;
+  height: 41px;
   transition: 400ms all ease-in-out;
   margin-bottom: 10px;
   display: flex;
@@ -327,11 +331,15 @@ input::-webkit-inner-spin-button {
   border-right: none;
 }
 
+.storage-data {
+  font-weight: 700;
+}
+
 .item,
 .heading-item {
   width: 100%;
-  color: #06255d;
   height: 40px;
+  color: #06255d;
   border-right: 1px solid #06255d;
   display: flex;
   align-items: center;

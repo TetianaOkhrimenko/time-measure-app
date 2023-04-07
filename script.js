@@ -118,6 +118,23 @@ function durationBetweenDates(start, end, type, typeOfDays) {
 const formatDate = (date) => date.toISOString().substring(0, 10);
 // formatDate(new Date()); // YYYY-DD-MM
 
+//Function adds a week to current date
+
+function addWeek() {
+  let start = new Date(startDateInput.value);
+  //let end = new Date(endDateInput.value);
+  let newDate = new Date(start.setDate(start.getDate() + 7));
+  endDateInput.value = formatDate(newDate);
+}
+
+//Function adds a month to current date
+function addMonth() {
+  let start = new Date(startDateInput.value);
+  // let end = new Date(endDateInput.value);
+  let newDate = new Date(start.setMonth(start.getMonth() + 1));
+  endDateInput.value = formatDate(newDate);
+}
+
 //Function adds week or month to current day and return new date
 function addDaystoDate(day) {
   let start = new Date(startDateInput.value);
@@ -271,13 +288,16 @@ selectTime.addEventListener("change", function (event) {
   uncheckRadioButton();
   let start = new Date(startDateInput.value);
   let newMonth = start.getMonth() + 1;
-  console.log(newMonth);
+  //console.log(newMonth);
   switch (selectTime.value) {
     case "week":
-      addDaystoDate(7);
+      addWeek();
+      //addDaystoDate(7);
       break;
     case "month":
-      if (newMonth === 2) {
+      addMonth();
+      break;
+    /*if (newMonth === 2) {
         addDaystoDate(28);
         break;
       }
@@ -296,7 +316,7 @@ selectTime.addEventListener("change", function (event) {
         break;
       }
       addDaystoDate(31);
-      break;
+      break;*/
   }
 
   /* if (selectTime.value === "week") {

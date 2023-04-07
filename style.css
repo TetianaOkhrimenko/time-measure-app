@@ -430,6 +430,11 @@ input::-webkit-inner-spin-button {
   .result {
     padding: 0 20px;
   }
+
+  .item,
+  .heading-item {
+    padding: 0;
+  }
 }
 
 @media (max-width: 425px) {

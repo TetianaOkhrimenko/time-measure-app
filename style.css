@@ -29,8 +29,15 @@ h2 {
   width: 600px;
   margin: 40px auto;
   border-radius: 8px;
-  padding: 60px 40px;
   background-color: #e5eef3;
+}
+
+.primary_content {
+  padding: 60px 40px;
+}
+
+.secondary_content {
+  padding: 35px 40px;
 }
 
 .greating-text {
@@ -75,6 +82,10 @@ h2 {
   font-size: 20px;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   transition: all 400ms ease-in-out;
+}
+
+.secondary_image {
+  width: 400px;
 }
 
 .hero__btn:hover {
@@ -394,6 +405,13 @@ input::-webkit-inner-spin-button {
   .hero {
     width: 90%;
     max-width: 100%;
+  }
+
+  .primary_content {
+    padding: 20px 10px;
+  }
+
+  .secondary_content {
     padding: 20px 10px;
   }
 

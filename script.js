@@ -311,7 +311,6 @@ plusIcon.addEventListener("click", (event) => {
 
   if (condition === "hidden") {
     condition = "showen";
-    console.log(condition);
     displayShow();
   } else {
     condition = "hidden";

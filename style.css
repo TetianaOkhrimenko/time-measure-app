@@ -78,7 +78,8 @@ h2 {
 }
 
 .hero__btn:hover {
-  opacity: 0.8;
+  background-color: #f83b76;
+  box-shadow: rgba(6, 37, 93, 0.35) 0px 5px 15px;
 }
 
 .hero__heading {
@@ -329,6 +330,10 @@ input::-webkit-inner-spin-button {
   gap: 10px;
   border: 1px solid #06255d;
   border-right: none;
+}
+
+.storage-item:hover {
+  box-shadow: rgba(6, 37, 93, 0.35) 0px 5px 15px;
 }
 
 .storage-data {

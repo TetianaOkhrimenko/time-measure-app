@@ -31,8 +31,6 @@ const isWeekend = (date) => {
   return day === 6 || day === 0;
 };
 
-//console.log(isWeekend("2023-04-01"));
-
 //Функція повертає кількість робочих днів між двома датами
 function getBusinessDatesCount(startDate, endDate) {
   let count = 0;
@@ -47,24 +45,20 @@ function getBusinessDatesCount(startDate, endDate) {
   return count;
 }
 
-//console.log(getBusinessDatesCount("2023-03-01", "2023-03-31"));
-
 //Функція повертає кількість вихідних днів між двома датами
 function getWeekendsDatesCount(startDate, endDate) {
   let count = 0;
-  startDate = new Date(startDate);
-  endDate = new Date(endDate);
+  let start = new Date(startDate);
+  let end = new Date(endDate);
 
-  const curDate = new Date(startDate.getTime());
-  while (curDate <= new Date(endDate)) {
+  const curDate = new Date(start.getTime());
+  while (curDate <= new Date(end)) {
     if (isWeekend(curDate)) count++;
     curDate.setDate(curDate.getDate() + 1);
   }
 
   return count;
 }
-
-//console.log(getWeekendsDatesCount("2023-03-01", "2023-03-31"));
 
 //Функція рахує різницю між двома датами в мілісекундах.
 let countDifferenseMiliseconds = function (start, end) {
@@ -74,7 +68,6 @@ let countDifferenseMiliseconds = function (start, end) {
   endD = endD.setHours(24, 0, 0, 0);
   return endD - startD;
 };
-//console.log(countDifferenseMiliseconds("01 March 2023", "31 March 2023"));
 
 //Function count reasul in days or hours or seconds etc depending of what days - business, weekends.
 function durationBetweenDates(start, end, type, typeOfDays) {
@@ -112,8 +105,6 @@ function durationBetweenDates(start, end, type, typeOfDays) {
   return Math.round(result);
 }
 
-//console.log(durationBetweenDates("01 March 2023", "31 March 2023", "hours"));
-
 //Function transforms date to format YYYY-DD-MM
 const formatDate = (date) => date.toISOString().substring(0, 10);
 // formatDate(new Date()); // YYYY-DD-MM
@@ -142,20 +133,6 @@ function addDaystoDate(day) {
   let newDate = new Date(start.setDate(start.getDate() + day));
   endDateInput.value = formatDate(newDate);
   console.log(formatDate(newDate));
-
-  //let dateAfterWeek = new Date(start.setDate(start.getDate() + day));
-  //let year = dateAfterWeek.getFullYear();
-  //let month = dateAfterWeek.getMonth() + 1;
-  //let date = dateAfterWeek.getDate();
-  //if (month < 10) {
-  //  month = `0${month}`;
-  //}
-  //if (date < 10) {
-  //  date = `0${date}`;
-  //}
-  //console.log(dateAfterWeek); // Sat Apr 08 2023 01:00:00 GMT+0100 (за літнім часом у Великій Британії)
-  //console.log(startDateInput.value); //2023-04-01
-  //endDateInput.value = `${year}-${month}-${date}`;
 }
 
 //
@@ -272,7 +249,7 @@ countOption.addEventListener("change", function (event) {
     !startDateInput.value ||
     !endDateInput.value
   ) {
-    resultBox.textContent = "Enter a valid date or choose set of days";
+    resultBox.textContent = "Enter valid dates and choose set of days";
     resultBox.classList.add("red");
   } else {
     resultBox.textContent = message;
@@ -294,11 +271,11 @@ selectTime.addEventListener("change", function (event) {
   uncheckRadioButton();
   let start = new Date(startDateInput.value);
   let newMonth = start.getMonth() + 1;
-  //console.log(newMonth);
+
   switch (selectTime.value) {
     case "week":
       addWeek();
-      //addDaystoDate(7);
+
       break;
     case "month":
       addMonth();

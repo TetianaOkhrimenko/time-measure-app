@@ -499,6 +499,10 @@ input::-webkit-inner-spin-button {
   .icon {
     width: 80px;
   }
+
+  .result {
+    padding: 0;
+  }
 }
 
 @media (max-width: 425px) {

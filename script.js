@@ -1,6 +1,7 @@
 "use strict";
 
 const STORAGE_KEY = "results";
+const MAX_STORAGE_ITEMS = 10;
 
 let primaryContentBlock = document.querySelector(".primary_content");
 let secondaryContentBlock = document.querySelector(".secondary_content");
@@ -141,14 +142,12 @@ function getResults() {
   const results = getResultsFromLocalStorage();
 
   results.forEach((result, i) => {
-    if (i < 10) {
-      let storageItem = document.createElement("div");
-      storageItem.classList.add("storage-item");
-      //storageItem.textContent = result;
-      //storageItem.textContent = `Dates: ${result.start}    ${result.end}     Result: ${result.result}`;
-      storageItem.innerHTML = `<div class='item'>${result.startdate}</div><div class='item'>${result.enddate} </div><div class='item'>${result.result}</div>`;
-      storageBox.prepend(storageItem);
-    }
+    let storageItem = document.createElement("div");
+    storageItem.classList.add("storage-item");
+    //storageItem.textContent = result;
+    //storageItem.textContent = `Dates: ${result.start}    ${result.end}     Result: ${result.result}`;
+    storageItem.innerHTML = `<div class='item'>${result.startdate}</div><div class='item'>${result.enddate} </div><div class='item'>${result.result}</div>`;
+    storageBox.prepend(storageItem);
   });
 }
 
@@ -162,7 +161,7 @@ function addResult(start, end, message) {
   let allStorageItems = document.querySelectorAll(".storage-item");
   storageBox.prepend(storageItem);
 
-  if (allStorageItems.length >= 10) {
+  if (allStorageItems.length >= MAX_STORAGE_ITEMS) {
     storageBox.lastChild.remove();
   }
 
@@ -181,7 +180,7 @@ function storeResultInLocalStorage(start, end, message) {
   let results = getResultsFromLocalStorage();
   results.push({ startdate: start, enddate: end, result: message });
 
-  if (results.length > 10) {
+  if (results.length > MAX_STORAGE_ITEMS) {
     results.shift();
   }
 

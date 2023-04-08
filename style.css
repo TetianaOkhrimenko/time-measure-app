@@ -329,7 +329,7 @@ input::-webkit-inner-spin-button {
   display: flex;
   gap: 10px;
   border: 1px solid #06255d;
-  border-right: none;
+  border-radius: 5px;
 }
 
 .storage-item:hover {
@@ -353,6 +353,11 @@ input::-webkit-inner-spin-button {
   opacity: 0.8;
   transition: 400ms all ease-in-out;
   margin-bottom: 10px;
+}
+
+.item:nth-child(3),
+.heading-item:nth-child(3) {
+  border-right: none;
 }
 
 .red {

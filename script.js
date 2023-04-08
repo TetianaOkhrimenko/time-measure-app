@@ -13,7 +13,17 @@ let resultBox = document.querySelector(".result_box");
 let selectDays = document.getElementById("set-of-days");
 let radioButton = document.querySelectorAll(".radio_btn");
 let countOption = document.querySelector(".count_option");
-let storageBox = document.querySelector(".storage-box");
+let lastResultsImage = document.querySelector(".last-results_icon");
+let plusIcon = document.querySelector(".plus-icon");
+let storageBox = document.querySelector(".storage-box ");
+let storageData = document.querySelector(".storage-data ");
+let condition = "hidden";
+
+if (condition === "hidden") {
+  displayHide();
+} else {
+  displayShow();
+}
 
 secondaryContentBlock.hidden = true;
 endDateInput.classList.add("light");
@@ -169,6 +179,18 @@ function addResult(start, end, message) {
   storeResultInLocalStorage(start, end, message);
 }
 
+//Fuction show or hide history of results on the page
+
+function displayHide() {
+  storageBox.style.display = "none";
+  storageData.style.display = "none";
+}
+
+function displayShow() {
+  storageBox.style.display = "block";
+  storageData.style.display = "flex";
+}
+
 //Storage's functions
 
 function getResultsFromLocalStorage() {
@@ -279,5 +301,20 @@ selectTime.addEventListener("change", function (event) {
     case "month":
       addMonth();
       break;
+  }
+});
+
+// Event click on plus icon and show the table of last 10 results
+
+plusIcon.addEventListener("click", (event) => {
+  event.preventDefault();
+
+  if (condition === "hidden") {
+    condition = "showen";
+    console.log(condition);
+    displayShow();
+  } else {
+    condition = "hidden";
+    displayHide();
   }
 });

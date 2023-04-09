@@ -20,9 +20,9 @@ let storageData = document.querySelector(".storage-data ");
 let shouldHideTable = true;
 
 if (shouldHideTable === true) {
-  displayHide();
+  hideTable();
 } else {
-  displayShow();
+  showTable();
 }
 
 //secondaryContentBlock.hidden = true;
@@ -181,12 +181,12 @@ function addResult(start, end, message) {
 
 //Fuction show or hide history of results on the page
 
-function displayHide() {
+function hideTable() {
   storageBox.style.display = "none";
   storageData.style.display = "none";
 }
 
-function displayShow() {
+function showTable() {
   storageBox.style.display = "block";
   storageData.style.display = "flex";
 }
@@ -313,11 +313,11 @@ plusIcon.addEventListener("click", (event) => {
 
   if (shouldHideTable === true) {
     shouldHideTable = false;
-    displayShow();
+    showTable();
     plusIcon.setAttribute("src", "./images/minus-icon.svg");
   } else {
     shouldHideTable = true;
-    displayHide();
+    hideTable();
     plusIcon.setAttribute("src", "./images/plus-icon.svg");
   }
 });

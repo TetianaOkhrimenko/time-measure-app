@@ -9,14 +9,15 @@ let buttonStart = document.querySelector(".hero__btn");
 let startDateInput = document.getElementById("start-date");
 let endDateInput = document.getElementById("end-date");
 let selectTime = document.getElementById("set-time");
-let resultBox = document.querySelector(".result_box");
 let selectDays = document.getElementById("set-of-days");
 let radioButton = document.querySelectorAll(".radio_btn");
 let countOption = document.querySelector(".count_option");
-let lastResultsImage = document.querySelector(".last-results_icon");
+let resultBox = document.querySelector(".result_box");
+//let lastResultsImage = document.querySelector(".last-results_icon");
 let plusIcon = document.querySelector(".plus-icon");
 let storageBox = document.querySelector(".storage-box ");
 let storageData = document.querySelector(".storage-data ");
+
 let shouldHideTable = true;
 
 if (shouldHideTable === true) {
@@ -29,7 +30,7 @@ if (shouldHideTable === true) {
 //endDateInput.classList.add("light");
 //endDateInput.style.opacity = "0.7";
 
-//Function that make radio buttons un-cheked
+//Function makes radio-buttons un-checked
 
 function uncheckRadioButton() {
   Array.from(radioButton).forEach((radio) => (radio.checked = false));
@@ -80,7 +81,7 @@ let countDifferenseMiliseconds = function (start, end) {
   return endD - startD;
 };
 
-//Function count reasul in days or hours or seconds etc depending of what days - business, weekends.
+//Function counts a result in days or hours or seconds etc depending of days - business, weekends.
 function durationBetweenDates(start, end, type, typeOfDays) {
   let result; // seconds
 
@@ -137,15 +138,6 @@ function addMonth() {
   endDateInput.value = formatDate(newDate);
 }
 
-//Function adds week or month to current day and return new date
-function addDaystoDate(day) {
-  let start = new Date(startDateInput.value);
-  let end = new Date(endDateInput.value);
-  let newDate = new Date(start.setDate(start.getDate() + day));
-  endDateInput.value = formatDate(newDate);
-  console.log(formatDate(newDate));
-}
-
 //
 
 function getResults() {
@@ -179,7 +171,7 @@ function addResult(start, end, message) {
   storeResultInLocalStorage(start, end, message);
 }
 
-//Fuction show or hide history of results on the page
+//Function shows or hides history of results on the page
 
 function hideTable() {
   storageBox.style.display = "none";
@@ -306,7 +298,7 @@ selectTime.addEventListener("change", function (event) {
   }
 });
 
-// Event click on plus icon and show the table of last 10 results
+// Event click on plus icon and show the table with last 10 results
 
 plusIcon.addEventListener("click", (event) => {
   event.preventDefault();

@@ -314,8 +314,10 @@ plusIcon.addEventListener("click", (event) => {
   if (shouldHideTable === true) {
     shouldHideTable = false;
     displayShow();
+    plusIcon.setAttribute("src", "./images/minus-icon.svg");
   } else {
     shouldHideTable = true;
     displayHide();
+    plusIcon.setAttribute("src", "./images/plus-icon.svg");
   }
 });

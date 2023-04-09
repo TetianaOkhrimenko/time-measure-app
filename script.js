@@ -25,8 +25,8 @@ if (shouldHideTable === true) {
   displayShow();
 }
 
-secondaryContentBlock.hidden = true;
-endDateInput.classList.add("light");
+//secondaryContentBlock.hidden = true;
+//endDateInput.classList.add("light");
 //endDateInput.style.opacity = "0.7";
 
 //Function that make radio buttons un-cheked
@@ -216,7 +216,8 @@ getResults();
 buttonStart.addEventListener("click", function (event) {
   event.preventDefault();
   primaryContentBlock.hidden = true;
-  secondaryContentBlock.hidden = false;
+  //secondaryContentBlock.hidden = false;
+  secondaryContentBlock.style.display = "block";
 });
 
 startDateInput.addEventListener("change", (event) => {
@@ -225,7 +226,8 @@ startDateInput.addEventListener("change", (event) => {
   uncheckRadioButton();
   selectTime.value = "option-0";
   endDateInput.disabled = false;
-  endDateInput.classList.remove("light");
+  //endDateInput.classList.remove("light");
+  endDateInput.style.opacity = "1";
   let minDate = formatDate(new Date(startDateInput.value));
   endDateInput.setAttribute("min", minDate);
 

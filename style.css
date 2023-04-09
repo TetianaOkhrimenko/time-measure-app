@@ -38,6 +38,7 @@ h2 {
 
 .secondary_content {
   padding: 35px 40px;
+  display: none;
 }
 
 .greating-text {
@@ -163,6 +164,10 @@ h2 {
   box-shadow: 0px 1px 2px 0px rgba(6, 37, 93, 0.7),
     1px 2px 5px 0px rgb(6 37 93 / 0%), 2px 0px 4px 0px rgb(6 37 93 / 0%),
     2px 1px 16px 0px rgb(6 37 93 / 50%);
+}
+
+#end-date {
+  opacity: 0.7;
 }
 
 .select-box {

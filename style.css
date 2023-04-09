@@ -297,7 +297,7 @@ input::-webkit-inner-spin-button {
 .result {
   display: flex;
   align-items: center;
-  width: 100%;
+  width: 96%;
 }
 
 .result_box {
@@ -326,13 +326,13 @@ input::-webkit-inner-spin-button {
 }
 
 .last-results_box {
+  font-size: 18px;
   width: 100%;
   color: #06255d;
   height: 40px;
   display: flex;
   align-items: center;
   padding: 20px;
-  opacity: 0.8;
   transition: 400ms all ease-in-out;
 }
 
@@ -544,5 +544,9 @@ input::-webkit-inner-spin-button {
 
   .select-arrow {
     top: -1px;
+  }
+
+  .result_box {
+    padding: 10px;
   }
 }

@@ -217,7 +217,7 @@ buttonStart.addEventListener("click", function (event) {
   event.preventDefault();
   primaryContentBlock.hidden = true;
   //secondaryContentBlock.hidden = false;
-  secondaryContentBlock.style.display = "block";
+  secondaryContentBlock.classList.remove("display_none");
 });
 
 startDateInput.addEventListener("change", (event) => {
@@ -226,8 +226,8 @@ startDateInput.addEventListener("change", (event) => {
   uncheckRadioButton();
   selectTime.value = "option-0";
   endDateInput.disabled = false;
-  //endDateInput.classList.remove("light");
-  endDateInput.style.opacity = "1";
+  endDateInput.classList.remove("light");
+  //endDateInput.style.opacity = "1";
   let minDate = formatDate(new Date(startDateInput.value));
   endDateInput.setAttribute("min", minDate);
 

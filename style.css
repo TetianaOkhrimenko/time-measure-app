@@ -363,11 +363,6 @@ input::-webkit-inner-spin-button {
   border-radius: 5px;
 }
 
-.storage-item:hover {
-  box-shadow: rgba(6, 37, 93, 0.35) 0px 5px 15px;
-  cursor: pointer;
-}
-
 .storage-data {
   font-weight: 700;
   display: none;

@@ -17,9 +17,9 @@ let lastResultsImage = document.querySelector(".last-results_icon");
 let plusIcon = document.querySelector(".plus-icon");
 let storageBox = document.querySelector(".storage-box ");
 let storageData = document.querySelector(".storage-data ");
-let condition = "hidden";
+let shouldHideTable = true;
 
-if (condition === "hidden") {
+if (shouldHideTable === true) {
   displayHide();
 } else {
   displayShow();
@@ -309,11 +309,11 @@ selectTime.addEventListener("change", function (event) {
 plusIcon.addEventListener("click", (event) => {
   event.preventDefault();
 
-  if (condition === "hidden") {
-    condition = "showen";
+  if (shouldHideTable === true) {
+    shouldHideTable = false;
     displayShow();
   } else {
-    condition = "hidden";
+    shouldHideTable = true;
     displayHide();
   }
 });

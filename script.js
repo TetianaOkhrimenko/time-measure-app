@@ -149,8 +149,13 @@ const formatDate = (date) => date.toISOString().substring(0, 10);
 
 //Function adds a week to current date
 function addWeek() {
+  /*if (!startDateInput.value) {
+    startDateInput.value = formatDate(new Date());
+    endDateInput.disabled = false;
+    endDateInput.classList.remove("light");
+  }*/
+
   let start = new Date(startDateInput.value);
-  //let end = new Date(endDateInput.value);
   let newDate = new Date(start.setDate(start.getDate() + 7));
   endDateInput.value = formatDate(newDate);
 }
@@ -310,8 +315,8 @@ selectDays.addEventListener("change", uncheckRadioButton);
 selectTime.addEventListener("change", function (event) {
   event.preventDefault();
   uncheckRadioButton();
-  let start = new Date(startDateInput.value);
-  let newMonth = start.getMonth() + 1;
+  //let start = new Date(startDateInput.value);
+  //let newMonth = start.getMonth() + 1;
 
   switch (selectTime.value) {
     case "week":

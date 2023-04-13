@@ -249,8 +249,10 @@ startDateInput.addEventListener("change", (event) => {
 });
 
 endDateInput.addEventListener("change", (event) => {
+  event.preventDefault();
   uncheckRadioButton();
   selectTime.value = "option-0";
+  selectDays.value = "option-0";
 });
 
 checkBox.addEventListener("change", (event) => {

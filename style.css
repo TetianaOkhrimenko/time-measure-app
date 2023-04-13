@@ -169,6 +169,42 @@ h2 {
     2px 1px 16px 0px rgb(6 37 93 / 50%);
 }
 
+.check_box {
+  display: flex;
+  padding: 0 40px;
+  margin-top: 15px;
+}
+
+.check_box label {
+  font-family: "Oswald", sans-serif;
+  color: #06255d;
+}
+
+.check_box input {
+  margin-right: 20px;
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  border: 2px solid #06255d;
+  border-radius: 3px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.check_box input::after {
+  font-family: "Font Awesome 6 Free";
+  font-weight: 900;
+  content: "\f00c";
+  color: #06255d;
+  font-size: small;
+  display: none;
+}
+
+.check_box input:checked::after {
+  display: block;
+}
+
 .select-box {
   align-items: center;
   display: flex;
@@ -398,42 +434,6 @@ input::-webkit-inner-spin-button {
 
 .blue {
   color: #06255d;
-}
-
-.check_box {
-  display: flex;
-  padding: 0 40px;
-  margin-top: 15px;
-}
-
-.check_box label {
-  font-family: "Oswald", sans-serif;
-  color: #06255d;
-}
-
-.check_box input {
-  margin-right: 20px;
-  appearance: none;
-  width: 20px;
-  height: 20px;
-  border: 2px solid #06255d;
-  border-radius: 3px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.check_box input::after {
-  font-family: "Font Awesome 6 Free";
-  font-weight: 900;
-  content: "\f00c";
-  color: #06255d;
-  font-size: small;
-  display: none;
-}
-
-.check_box input:checked::after {
-  display: block;
 }
 
 @media (max-width: 600px) {

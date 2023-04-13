@@ -1,8 +1,9 @@
 "use strict";
-
+//CONST
 const STORAGE_KEY = "results";
 const MAX_STORAGE_ITEMS = 10;
 
+//DOM VARIABLES
 let primaryContentBlock = document.querySelector(".primary_content");
 let secondaryContentBlock = document.querySelector(".secondary_content");
 let buttonStart = document.querySelector(".hero__btn");
@@ -13,11 +14,11 @@ let selectDays = document.getElementById("set-of-days");
 let radioButton = document.querySelectorAll(".radio_btn");
 let countOption = document.querySelector(".count_option");
 let resultBox = document.querySelector(".result_box");
-//let lastResultsImage = document.querySelector(".last-results_icon");
 let plusIcon = document.querySelector(".plus-icon");
 let storageBox = document.querySelector(".storage-box ");
 let storageData = document.querySelector(".storage-data ");
 
+//VARIABLES
 let shouldHideTable = true;
 
 if (shouldHideTable === true) {
@@ -30,19 +31,22 @@ if (shouldHideTable === true) {
 //endDateInput.classList.add("light");
 //endDateInput.style.opacity = "0.7";
 
-//Function makes radio-buttons un-checked
+//FUNCTIONS
 
+//Function makes radio-buttons un-checked
 function uncheckRadioButton() {
   Array.from(radioButton).forEach((radio) => (radio.checked = false));
   resultBox.textContent = " ";
 }
 
+//Function returns true if day is weekend
 //Функція повертає true якщо день вихідний
 const isWeekend = (date) => {
   const day = new Date(date).getDay();
   return day === 6 || day === 0;
 };
 
+//Function returns quantity of business days between two dates
 //Функція повертає кількість робочих днів між двома датами
 function getBusinessDatesCount(startDate, endDate) {
   let count = 0;
@@ -57,6 +61,7 @@ function getBusinessDatesCount(startDate, endDate) {
   return count;
 }
 
+//Function returns quantity of weekends between two dates
 //Функція повертає кількість вихідних днів між двома датами
 function getWeekendsDatesCount(startDate, endDate) {
   let count = 0;
@@ -72,6 +77,7 @@ function getWeekendsDatesCount(startDate, endDate) {
   return count;
 }
 
+//Function counts difference between two dates in milliseconds
 //Функція рахує різницю між двома датами в мілісекундах.
 let countDifferenseMiliseconds = function (start, end) {
   let startD = new Date(start);
@@ -81,7 +87,7 @@ let countDifferenseMiliseconds = function (start, end) {
   return endD - startD;
 };
 
-//Function counts a result in days or hours or seconds etc depending of days - business, weekends.
+//Function counts a result in days or hours or seconds etc depending of type of days - business, weekends.
 function durationBetweenDates(start, end, type, typeOfDays) {
   let result; // seconds
 
@@ -122,7 +128,6 @@ const formatDate = (date) => date.toISOString().substring(0, 10);
 // formatDate(new Date()); // YYYY-DD-MM
 
 //Function adds a week to current date
-
 function addWeek() {
   let start = new Date(startDateInput.value);
   //let end = new Date(endDateInput.value);
@@ -138,8 +143,6 @@ function addMonth() {
   endDateInput.value = formatDate(newDate);
 }
 
-//
-
 function getResults() {
   const results = getResultsFromLocalStorage();
 
@@ -147,18 +150,15 @@ function getResults() {
     let storageItem = document.createElement("div");
     storageItem.classList.add("storage-item");
     //storageItem.textContent = result;
-    //storageItem.textContent = `Dates: ${result.start}    ${result.end}     Result: ${result.result}`;
     storageItem.innerHTML = `<div class='item'>${result.startdate}</div><div class='item'>${result.enddate} </div><div class='item'>${result.result}</div>`;
     storageBox.prepend(storageItem);
   });
 }
 
-//Function adds result to storageBox
-
+//Function adds a result to storageBox
 function addResult(start, end, message) {
   let storageItem = document.createElement("div");
   storageItem.classList.add("storage-item");
-  //storageItem.textContent = `Dates: ${start}    ${end}     Result: ${message}`;
   storageItem.innerHTML = `<div class='item'>${start}</div><div class='item'>${end} </div><div class='item'>${message}</div>`;
   let allStorageItems = document.querySelectorAll(".storage-item");
   storageBox.prepend(storageItem);
@@ -172,7 +172,6 @@ function addResult(start, end, message) {
 }
 
 //Function shows or hides history of results on the page
-
 function hideTable() {
   storageBox.style.display = "none";
   storageData.style.display = "none";
@@ -184,7 +183,6 @@ function showTable() {
 }
 
 //Storage's functions
-
 function getResultsFromLocalStorage() {
   const results = JSON.parse(localStorage.getItem(STORAGE_KEY)) || [];
   return results;
@@ -235,6 +233,7 @@ endDateInput.addEventListener("change", (event) => {
   selectTime.value = "option-0";
 });
 
+//Event 'change' on radio-buttons 'days', 'hours', 'minutes', 'seconds'. Shows result in resultBox
 //Додаємо обробник події на подію change на radion buttons - батьківський div. Обробник події -
 //виводить результат у resultBox в залежності яка radio button is checked
 countOption.addEventListener("change", function (event) {
@@ -273,14 +272,14 @@ countOption.addEventListener("change", function (event) {
   }
 });
 
+//Event on select 'Set of Days'
 //Обробник події на подію change на селекті set of days. Обробник події -
 //коли вибираємо селект set of days, то radio-buttons 'days', 'hours' .... стають un-checked
 //і поле resultBox  стає пустиим.
 
 selectDays.addEventListener("change", uncheckRadioButton);
 
-// Added event on select Set of Time
-
+// Event on select 'Set of Time'
 selectTime.addEventListener("change", function (event) {
   event.preventDefault();
   uncheckRadioButton();

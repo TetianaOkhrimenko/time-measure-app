@@ -416,7 +416,8 @@ input::-webkit-inner-spin-button {
   appearance: none;
   width: 20px;
   height: 20px;
-  border: 1px solid #06255d;
+  border: 2px solid #06255d;
+  border-radius: 3px;
   display: flex;
   justify-content: center;
   align-items: center;

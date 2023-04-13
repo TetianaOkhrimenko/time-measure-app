@@ -126,7 +126,7 @@ h2 {
   margin-bottom: 20px;
 }
 
-.date-box div {
+.date-box .date-content {
   display: flex;
   gap: 30px;
 }
@@ -399,6 +399,41 @@ input::-webkit-inner-spin-button {
 
 .blue {
   color: #06255d;
+}
+
+.check_box {
+  display: flex;
+  padding: 0 40px;
+  margin-top: 15px;
+}
+
+.check_box label {
+  font-family: "Oswald", sans-serif;
+  color: #06255d;
+}
+
+.check_box input {
+  margin-right: 20px;
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  border: 1px solid #06255d;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.check_box input::after {
+  font-family: "Font Awesome 6 Free";
+  font-weight: 900;
+  content: "\f00c";
+  color: #06255d;
+  font-size: small;
+  display: none;
+}
+
+.check_box input:checked::after {
+  display: block;
 }
 
 @media (max-width: 600px) {

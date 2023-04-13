@@ -6,6 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Time measure App ⏲️</title>
 
+    <script
+      src="https://kit.fontawesome.com/3a59da4b6c.js"
+      crossorigin="anonymous"
+    ></script>
+
     <link
       rel="apple-touch-icon"
       sizes="180x180"
@@ -41,9 +46,10 @@
       </div>
       <img class="hero__image" src="./images/image-1.svg" alt="Time" />
       <p class="summary-text">
-        Summary: In this App you can choose two dates and count set of time
-        between them in days, hours, minutes or seconds. You can choose all
-        days, business days or weekends as well.
+        Summary: This App counts the number of days, hours, minutes and seconds
+        between two dates. The select of all days, business days or weekends is
+        available. Last ten results are shown in the table after clicking on
+        plus icon.
       </p>
       <button class="hero__btn" type="button">Let's Start</button>
     </div>
@@ -53,7 +59,7 @@
         <img class="secondary_image" src="./images/image-5.svg" alt="Clock" />
         <div class="date-box">
           <h3>Choose your dates</h3>
-          <div>
+          <div class="date-content">
             <div>
               <img class="icon" src="./images/calendar.svg" alt="Calendar" />
             </div>
@@ -65,7 +71,14 @@
               <input class="light" type="date" id="end-date" disabled />
             </form>
           </div>
+          <div class="check_box">
+            <input type="checkbox" name="checkbox" id="includes_end-date" />
+            <label for="includes_end-date"
+              >Include end date in calculation</label
+            >
+          </div>
         </div>
+
         <div class="select-box">
           <img class="icon" src="./images/time.svg" alt="Calendar" />
           <label class="select-form" for="set-time">Choose set of time</label>

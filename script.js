@@ -9,6 +9,7 @@ let secondaryContentBlock = document.querySelector(".secondary_content");
 let buttonStart = document.querySelector(".hero__btn");
 let startDateInput = document.getElementById("start-date");
 let endDateInput = document.getElementById("end-date");
+let checkBox = document.getElementById("includes_end-date");
 let selectTime = document.getElementById("set-time");
 let selectDays = document.getElementById("set-of-days");
 let radioButton = document.querySelectorAll(".radio_btn");
@@ -31,6 +32,8 @@ if (shouldHideTable === true) {
 //endDateInput.classList.add("light");
 //endDateInput.style.opacity = "0.7";
 
+//selectDays.value = "all_days";
+
 //FUNCTIONS
 
 //Function makes radio-buttons un-checked
@@ -50,12 +53,19 @@ const isWeekend = (date) => {
 //Функція повертає кількість робочих днів між двома датами
 function getBusinessDatesCount(startDate, endDate) {
   let count = 0;
-  startDate = new Date(startDate);
-  endDate = new Date(endDate);
-  let curDate = new Date(startDate.getTime());
-  while (curDate <= new Date(endDate)) {
+  let start = new Date(startDate);
+  let end = new Date(endDate);
+  let curDate = new Date(start.getTime());
+  while (curDate < new Date(end)) {
     if (!isWeekend(curDate)) count++;
     curDate.setDate(curDate.getDate() + 1);
+  }
+
+  if (checkBox.checked === true) {
+    while (curDate <= new Date(end)) {
+      if (!isWeekend(curDate)) count++;
+      curDate.setDate(curDate.getDate() + 1);
+    }
   }
 
   return count;
@@ -69,9 +79,16 @@ function getWeekendsDatesCount(startDate, endDate) {
   let end = new Date(endDate);
 
   const curDate = new Date(start.getTime());
-  while (curDate <= new Date(end)) {
+  while (curDate < new Date(end)) {
     if (isWeekend(curDate)) count++;
     curDate.setDate(curDate.getDate() + 1);
+  }
+
+  if (checkBox.checked === true) {
+    while (curDate <= new Date(end)) {
+      if (isWeekend(curDate)) count++;
+      curDate.setDate(curDate.getDate() + 1);
+    }
   }
 
   return count;
@@ -82,9 +99,12 @@ function getWeekendsDatesCount(startDate, endDate) {
 let countDifferenseMiliseconds = function (start, end) {
   let startD = new Date(start);
   let endD = new Date(end);
-  startD = startD.setHours(0, 0, 0, 0);
-  endD = endD.setHours(24, 0, 0, 0);
-  return endD - startD;
+
+  if (checkBox.checked === true) {
+    return endD.setHours(24, 0, 0, 0) - startD.setHours(0, 0, 0, 0);
+  }
+
+  return Date.parse(endD) - Date.parse(startD);
 };
 
 //Function counts a result in days or hours or seconds etc depending of type of days - business, weekends.
@@ -231,6 +251,11 @@ startDateInput.addEventListener("change", (event) => {
 endDateInput.addEventListener("change", (event) => {
   uncheckRadioButton();
   selectTime.value = "option-0";
+});
+
+checkBox.addEventListener("change", (event) => {
+  event.preventDefault();
+  uncheckRadioButton();
 });
 
 //Event 'change' on radio-buttons 'days', 'hours', 'minutes', 'seconds'. Shows result in resultBox

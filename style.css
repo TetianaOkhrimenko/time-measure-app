@@ -467,7 +467,7 @@ input::-webkit-inner-spin-button {
     width: 150px;
   }
 
-  .date-box div {
+  .date-box .date-content {
     gap: 0;
   }
 
@@ -507,9 +507,14 @@ input::-webkit-inner-spin-button {
     padding: 10px 10px 3px 5px;
     width: auto;
   }
-  .date-box div {
+  .date-box .date-content {
     justify-content: center;
     gap: 0;
+  }
+
+  .check_box {
+    padding: 0;
+    justify-content: center;
   }
 
   .form input {

@@ -450,6 +450,14 @@ input::-webkit-inner-spin-button {
     max-width: 100%;
   }
 
+  .hero__image {
+    max-width: 100%;
+  }
+
+  .secondary_image {
+    max-width: 100%;
+  }
+
   .primary_content {
     padding: 20px;
   }
@@ -514,7 +522,9 @@ input::-webkit-inner-spin-button {
     max-width: 100%;
     padding: 10px 10px 3px 5px;
     width: auto;
+    line-height: 1.2;
   }
+
   .date-box .date-content {
     justify-content: center;
     gap: 0;
@@ -543,6 +553,7 @@ input::-webkit-inner-spin-button {
   .form {
     gap: 5px;
   }
+
   .select-box select {
     width: 140px;
   }
@@ -558,9 +569,6 @@ input::-webkit-inner-spin-button {
 
 @media (max-width: 425px) {
   .hero {
-    max-width: 100%;
-  }
-  .secondary_image {
     max-width: 100%;
   }
 
@@ -600,10 +608,25 @@ input::-webkit-inner-spin-button {
 
   .result_box {
     padding: 10px;
+    line-height: 1.2;
   }
 
   .item {
     line-height: 1.2;
     text-align: center;
+  }
+}
+
+@media (max-width: 385px) {
+  .form {
+    gap: 3px;
+  }
+
+  .select-arrow {
+    top: -3px;
+  }
+
+  .count_option input[type="radio"] {
+    width: 120px;
   }
 }
